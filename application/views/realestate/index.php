@@ -52,7 +52,7 @@
                             <th class="column-title">Location </th>
                             <th class="column-title">Price </th>
                             <th class="column-title">Size</th>
-                            <th class="column-title"> </th>
+                            <th class="column-title">KPIs</th>
                             <th class="column-title no-link last"><span class="nobr">Action</span></th>
 <!--//
                             <th class="bulk-actions" colspan="7">
@@ -72,11 +72,14 @@
                               <input type="checkbox" class="flat" name="table_records">
                             </td>
 //-->                            
-                            <td class=" "><a href="<?php echo site_url('realestate/'.$object_item['objid']); ?>"><?php echo $object_item['title']; ?></a></td>
-                            <td class=" "><?php echo $object_item['zip']; ?> <?php echo $object_item['city']; ?> - <?php echo $object_item['street']; ?></td>
+                            <td width="30%" class=" "><a href="<?php echo site_url('realestate/'.$object_item['objid']); ?>"><?php echo $object_item['title']; ?></a></td>
+                            <td class=" "><?php echo $object_item['zip']; ?> <?php echo $object_item['city']; ?><br /><?php echo $object_item['street']; ?></td>
                             <td class=" ">€ <?php echo number_format($object_item['purchaseprice'],2,'.',','); ?> <!--<i class="success fa fa-long-arrow-up"></i>--> <a href="<?php echo site_url('realestate/delete/'.$object_item['objid']); ?>">[X]</a></td>
                             <td class=" "><?php echo $object_item['size']; ?> m2 / <?php echo $object_item['outdoorspace']; ?> m2</td>
-                            <td class="a-right a-right "></td>
+                            <td width="20%" class="a-right a-right ">Yield <?php echo number_format($object_item['yield'], 2); ?>%<br />
+                              Earnings <?php echo number_format($object_item['earnings'], 2); ?> €<br />
+                              Cashflow <?php echo number_format($object_item['cashflow'], 2); ?> €
+                            </td>
                             <td class=" last">
                               <a href="<?php echo site_url('realestate/'.$object_item['objid']); ?>">[View]</a> | 
                               <a href="<?php echo site_url('realestate/edit/'.$object_item['objid']); ?>">[Edit]</a>

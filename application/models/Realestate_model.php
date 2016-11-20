@@ -129,6 +129,21 @@ class Realestate_model extends CI_Model {
 		    );
 
 			$this->db->where( 'objid', $objid );
+			$this->db->update('realestate', $data );
+		    
+		    return true;
+		}			
+
+		public function update_kpis_objects($objid = FALSE, $data)
+		{
+
+		    $data = array(
+		        'cashflow' => $data['rei']['cashflow'],		        
+		        'earnings' => $data['rei']['earnings'],
+		        'yield' => $data['rei']['yield']
+		    );
+
+			$this->db->where( 'objid', $objid );
 			$this->db->update('realestate', $data);
 		    
 		    return true;

@@ -159,6 +159,9 @@ class Realestate extends CI_Controller {
 			$data2['rei'] = $data;
 			unset($data); $data = $data2;
 
+			// save KPIs
+ 			if ( isset( $objid ) ) $this->realestate_model->update_kpis_objects($objid, $data);
+
 	        $this->load->view('templates/header');
 	        $this->load->view('realestate/view', $data);
 	        $this->load->view('templates/footer');
