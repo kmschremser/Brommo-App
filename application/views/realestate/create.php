@@ -14,7 +14,7 @@
               <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2><?php if ( isset( $rei['update'] ) ) { ?><?php echo $lang['Update of a real estate object']; ?><?php } else { ?>Registration of a real estate object<?php } ?></h2>
+                    <h2><?php if ( isset( $rei['update'] ) ) { ?>Update of a real estate object<?php } else { ?>Registration of a real estate object<?php } ?></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>                    
                     </ul>

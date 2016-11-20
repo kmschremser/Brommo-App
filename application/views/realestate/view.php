@@ -212,8 +212,8 @@ if ( isset( $rei['avg_price'] ) ) {
                                 <th>AVG rent in this location:</th>
                                 <td class="info"><?php echo number_format($rei['alt_rent'], 2, '.', ','); ?> € <br />(
                                   <?php 
-                                  if ( $rei['diff_rent'] > 0 ) echo '<span class="green">good '; else echo '<span class="red">check '; 
-                                  echo number_format($rei['diff_rent'], 2, '.', ','); ?> €</span>)<br />
+                                  if ( $rei['diff_rent'] > 0 ) echo '<span class="red">check '; else echo '<span class="green">good '; 
+                                  echo number_format($rei['diff_rent'], 2, '.', ','); ?> €</span> )<br />
                                   <?php echo number_format($rei['rent_rate'], 2, '.', ','); ?> € per m2</td>
                               </tr> 
 
