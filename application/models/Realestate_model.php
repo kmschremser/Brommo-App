@@ -31,7 +31,7 @@ class Realestate_model extends CI_Model {
 		}
 
 
-		public function set_objects()
+		public function set_objects($data = null)
 		{
 		    //$this->load->helper('url');
 
@@ -41,6 +41,8 @@ class Realestate_model extends CI_Model {
 			if ( $this->input->post('kitchen') == 1 ) $kitchen = 1;
 			else $kitchen = 0;
 
+			if ( !isset( $data['rei']['mainimage'] ) ) $data['rei']['mainimage'] = '';
+			
 		    $data = array(
 		        //'objid' => $objid,
 		        'title' => $this->input->post('title'),		        

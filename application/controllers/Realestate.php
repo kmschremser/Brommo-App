@@ -86,11 +86,10 @@ class Realestate extends CI_Controller {
 
 			// rent gross
 			if ( $data['rentgross'] > 0 ) { 
-      			$data['rent_gross'] = $data['rentgross']; $data['addit'] = ' €';
+      			$data['addit'] = ' €';
 			} else {
       			// standard rent size 9,- EUR + 2,- EUR
-      			$data['rent_gross'] = $data['size'] * (9+2); 
-      			$data['rentgross'] = $rent_gross; 
+      			$data['rentgross'] = $data['size'] * (9+2); 
       			$data['addit'] = ' € (estim.)'; 
   			}
 

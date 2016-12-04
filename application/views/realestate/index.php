@@ -65,7 +65,8 @@
                             <td class=" "><?php echo $object_item['size']; ?> m2 / <?php echo $object_item['outdoorspace']; ?> m2</td>
                             <td width="20%" class="a-right a-right ">Yield <?php echo number_format($object_item['yield'], 2); ?>%<br />
                               Earnings <?php echo number_format($object_item['earnings'], 2); ?> €<br />
-                              Cashflow <?php echo number_format($object_item['cashflow'], 2); ?> €
+                              <?php if ( $object_item['cashflow'] < 0 ) { ?><span style="color:red"><?php } else { ?><span style="color:green"><?php } ?>
+                              Cashflow <?php echo number_format($object_item['cashflow'], 2); ?> €</span>
                             </td>
                             <td class=" last">
                               <a href="<?php echo site_url('realestate/'.$object_item['objid']); ?>">[View]</a> | 
