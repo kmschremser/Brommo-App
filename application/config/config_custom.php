@@ -1,12 +1,24 @@
 <?php
 
+$config['currency'] = '€';
+$config['sizeunit'] = 'm<sup>2</sup>';
+$config['salt'] = '$1$KPL2hzPq$TDXWtLG/xcs3wV90qKXSj.';
+
 $config['rate']['loan'] = "0.023"; // 2.3 % p.a.
 $config['rate']['agent'] = "0.036";
 $config['rate']['notary'] = "0.02";
 $config['rate']['landregistry'] = "0.046";
+$config['rate']['depreciation'] = "0.015";
+$config['rate']['renttax'] = "0.10";
+$config['rate']['profitetax'] = "0.25";
+$config['rate']['paybacktimes'] = "1.33";
+$config['rate']['paybackyears'] = "30";
+$config['rate']['risk'] = "0.05";
+$config['rate']['refurbishrate'] = "1";
 
-
-$config['rate']['overheads'] = 2;
+// in case nothing is added
+$config['rate']['overheads'] = "2";
+$config['rate']['standardrent'] = "9";
 
 
 // http://www.immopreise.at/

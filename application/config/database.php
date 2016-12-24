@@ -74,14 +74,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-if ( $_SERVER['HTTP_HOST'] == 'kms.ninja' ) {
+$subject = $_SERVER['HTTP_HOST'];
+$pattern = '/brommoapp\.com/';
+
+$return = preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
+
+if ( $return == 1 ) {
 	
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'brommorealestate.db.10829392.hostedresource.com',
-	'username' => 'brommorealestate',
+	'hostname' => 'brommoapp.db.10829392.hostedresource.com',
+	'username' => 'brommoapp',
 	'password' => 'Finger99!',
-	'database' => 'brommorealestate',
+	'database' => 'brommoapp',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -96,40 +101,16 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+);	
 
 } else {
 
-/**
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-**/
-
-$db['default'] = array(
-	'dsn'	=> 'mysql:unix_socket=/tmp/mysql.sock;dbname=realestate',
+	'dsn'	=> 'mysql:unix_socket=/tmp/mysql.sock;dbname=brommoapp',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'kms2016',
-	'database' => 'realestate',
+	'database' => 'brommoapp',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

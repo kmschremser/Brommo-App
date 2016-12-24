@@ -11,11 +11,11 @@ class Realestate_model extends CI_Model {
 		{
 		        if ($objid === FALSE)
 		        {
-		                $query = $this->db->order_by('modification', 'DESC')->get('realestate');
+		                $query = $this->db->where(array('owner_id' => $this->session->owner_id))->order_by('modification', 'DESC')->get('realestate');
 		                return $query->result_array();
 		        }
 
-		        $query = $this->db->from('realestate')->where(array('objid' => $objid))->get();
+		        $query = $this->db->from('realestate')->where(array('objid' => $objid, 'owner_id' => $this->session->owner_id))->get();
 		        return $query->row_array();
 		}
 
@@ -25,11 +25,11 @@ class Realestate_model extends CI_Model {
 		        {
 		        		return false;
 		        } else {
-					$query = $this->db->query('DELETE FROM realestate WHERE objid = ' . $objid );
+		        	$sql = 'DELETE FROM realestate WHERE objid = ' . $objid . ' AND owner_id = ' . $this->session->owner_id;
+					$query = $this->db->query( $sql );
 			        return true;
 		        }
 		}
-
 
 		public function set_objects($data = null)
 		{
@@ -38,8 +38,10 @@ class Realestate_model extends CI_Model {
 			// enlarge rent gross if parameters are set TODO
 			//if ( $this->input->post('freerent') == 1 ) { }
 
-			if ( $this->input->post('kitchen') == 1 ) $kitchen = 1;
-			else $kitchen = 0;
+			if ( $this->input->post('kitchen') == 1 ) 
+				$kitchen = 1;
+			else 
+				$kitchen = 0;
 
 			if ( !isset( $data['rei']['mainimage'] ) ) $data['rei']['mainimage'] = '';
 			
@@ -72,15 +74,23 @@ class Realestate_model extends CI_Model {
 		        'createdate' => $this->input->post('createdate'),
 		        'modification' => date("Y-m-d",time()),
 		        'agent' => $this->input->post('agent'),
-		        'mainimage' => $data['rei']['mainimage']	
+		        'mainimage' => $data['rei']['mainimage'],
+		        'rating' => $this->input->post('rating'),
+		        'taxpercent' => str_replace( ',', '.', $this->input->post('taxpercent')),
+		        'depreciationpercent' => str_replace( ',', '.', $this->input->post('depreciationpercent')),
+		        'loanregistrypercent' => str_replace( ',', '.', $this->input->post('loanregistrypercent')),
+		        'purchasetax' => str_replace( ',', '.', $this->input->post('purchasetax')),	
+		        'lawyerpercent' => str_replace( ',', '.', $this->input->post('lawyerpercent')),
+		        'owner_id' => $this->session->owner_id
 		    );
 
-		    return $this->db->insert('realestate', $data);
+		    $this->db->insert('realestate', $data);
+		    
+		    return $this->db->insert_id();
 		}	
 
 		public function update_objects($objid = FALSE, $data)
 		{
-
 			$this->config->load('config_custom');
 
 	        // get values from config
@@ -127,11 +137,17 @@ class Realestate_model extends CI_Model {
 		        'createdate' => $this->input->post('createdate'),
 		        'modification' => date("Y-m-d",time()),
 		        'agent' => $agent,
-		        'mainimage' => $data['rei']['mainimage']
+		        'mainimage' => $data['rei']['mainimage'],
+		        'rating' => $this->input->post('rating'),
+		        'taxpercent' => str_replace( ',', '.', $this->input->post('taxpercent')),
+		        'depreciationpercent' => str_replace( ',', '.', $this->input->post('depreciationpercent')),
+		        'loanregistrypercent' => str_replace( ',', '.', $this->input->post('loanregistrypercent')),
+		        'purchasetax' => str_replace( ',', '.', $this->input->post('purchasetax')),	
+		        'lawyerpercent' => str_replace( ',', '.', $this->input->post('lawyerpercent'))
 		    );
 
 			$this->db->where( 'objid', $objid );
-			$this->db->update('realestate', $data );
+			$this->db->update( 'realestate', $data );
 		    
 		    return true;
 		}			
@@ -149,6 +165,20 @@ class Realestate_model extends CI_Model {
 			$this->db->update('realestate', $data);
 		    
 		    return true;
-		}			
+		}	
+
+		public function get_objects_value_sum()
+		{
+			/*
+			$this->db->select_sum( 'purchaseprice' );
+			$data = $this->db->get('realestate');
+			*/
+
+			if ( isset( $this->session->owner_id ) ) {
+				$query = $this->db->query( 'SELECT sum(purchaseprice) AS sumpurchaseprice FROM realestate WHERE owner_id = ' . $this->session->owner_id );
+				return $query->row_array();
+			} else
+				return false;
+		}		
 
 }

@@ -50,17 +50,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['default_controller'] = 'welcome';
+
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['realestate/create'] = 'realestate/create';
-$route['realestate/update'] = 'realestate/update';
-$route['brommo/realestate/edit'] = 'realestate/edit';
 
-$route['realestate/(:any)'] = 'realestate/view/$1';
-$route['realestate'] = 'realestate';
+$route['realestate/create_reobjects'] = 'realestate/create_reobjects';
+$route['realestate/update_reobjects'] = 'realestate/update_reobjects';
+$route['realestate/edit_reobjects/(:any)']   = 'realestate/edit_reobjects/$1';
+$route['realestate/list_reobjects']   = 'realestate/list_reobjects';
+$route['realestate/view_reobjects/(:any)'] = 'realestate/view_reobjects/$1';
 
-$route['default_controller'] = 'realestate/index';
-//$route['(:any)'] = 'realestate/view/$1';
+$route['realestate/(:any)'] = 'realestate/view_reobjects/$1';
+$route['realestate'] = 'realestate/list_reobjects';
+
+$route['auth/login'] = 'auth/login';
+$route['auth/register'] = 'auth/register';
+$route['auth/passforgotten'] = 'auth/passforgotten';
+
+$route['default_controller'] = 'realestate/list_reobjects';
 
 
