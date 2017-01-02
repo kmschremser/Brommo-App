@@ -337,9 +337,11 @@ class Realestate extends CI_Controller {
 			$data['total_size'] = $data['size'] + ( $data['outdoorspace'] / 2 );
 
 			$data['total_price'] = $data['purchaseprice'] + $data['renovationprice'] + $data['agentprice'] + $data['notary'] + $data['landregistry'] + $data['loanregistrycost'];                              
+			$data['total_price_net'] = $data['purchasepricenet'] + $data['renovationprice'] + $data['agentprice'] + $data['notary'] + $data['landregistry'] + $data['loanregistrycost'];                              
 
 			$data['price_per_m2_exclgarage'] = ( $data['total_price'] - $data['garage'] ) / $data['size'];
 			$data['price_per_m2_incloutdoor'] = ( $data['total_price'] - $data['garage'] ) / $data['total_size'];
+			$data['price_net_per_m2_incloutdoor'] = ( $data['total_price_net'] - $data['garage'] ) / $data['total_size'];
 			$data['price_per_m2'] = $data['total_price'] / $data['size'];
 
 			// calculate avg price in this location

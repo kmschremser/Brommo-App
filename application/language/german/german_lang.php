@@ -50,6 +50,7 @@ $lang['TOTAL PRICE'] = 'GESAMTPREIS';
 $lang['TAXES'] = 'STEUERN';
 
 $lang['Price per m2'] = 'Preis pro m2';
+$lang['Price net per m2'] = 'Nettopreis pro m2';
 $lang['(incl. outdoor, excl. garage)'] = '(inkl. Outdoor, exkl. Garage)';
 $lang['(excl. garage)'] = '(exkl. Garage)';
 $lang['(excl. outdoor)'] = '(exkl. Outdoor)';

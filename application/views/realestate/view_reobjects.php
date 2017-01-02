@@ -66,6 +66,10 @@
                                 <th><code><?php echo $this->lang->line('Price per m2') . ' ' . $this->lang->line('(incl. outdoor, excl. garage)'); ?>:</code></th>
                                 <td class="color-info"><?php echo number_format(($rei['price_per_m2_incloutdoor']), 2, '.',','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
+                              <tr>
+                                <th><code><?php echo $this->lang->line('Price net per m2') . ' ' . $this->lang->line('(incl. outdoor, excl. garage)'); ?>:</code></th>
+                                <td class="color-info"><?php echo number_format(($rei['price_net_per_m2_incloutdoor']), 2, '.',','); ?> <?php echo $CURRENCY; ?></td>
+                              </tr>                              
 <?php if ( isset( $rei['avg_price'] ) ) { ?>                              
                               <tr>
                                 <th><code><?php echo $this->lang->line('AVG m2 for this area'); ?>:</code></th>
@@ -359,7 +363,7 @@
                                 <td><?php echo number_format(($rei['rent_net'] * 12), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
                               <tr>
-                                <th><code><?php echo $this->lang->line('VAT Reduction'); ?></code></th>
+                                <th><code><?php echo $this->lang->line('VAT reduction'); ?></code></th>
                                 <td><?php 
                                 echo number_format(($rei['vat_red'] * -1), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
