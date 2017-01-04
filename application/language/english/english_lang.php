@@ -65,7 +65,7 @@ $lang['p.m.'] = 'p.m.';
 $lang['per m2'] = 'per m2';
 $lang['outdoor'] = 'outdoor';
 
-$lang['LOAN - EQUITY RATIO'] = 'LOAN - EQUITY RATIO';
+$lang['LOAN - EQUITY RATIO'] = 'LOAN - EQUITY RATIO<br />VAT is included in equity';
 $lang['incl. overheads, reserve &amp; taxes'] = 'incl. overheads, reserve &amp; taxes';
 $lang['AVG rent in this area'] = 'AVG rent in this area';
 

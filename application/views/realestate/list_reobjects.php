@@ -56,7 +56,7 @@
                             </tfoot>
 -->                            
                             <tbody>
-        <?php $i=1; foreach ($realestate as $object_item): ?>
+                            <?php $i=1; foreach ($realestate as $object_item): ?>
 
                             <tr class="<?php $i++; if ($i%2==0) echo "even"; else echo "odd"; ?>">                              
                                 <td>
@@ -90,7 +90,7 @@
                                 </td>
                             </tr>
 
-        <?php endforeach; ?>
+                            <?php endforeach; ?>
 
 
                             </tbody>

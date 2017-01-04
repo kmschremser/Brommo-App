@@ -106,7 +106,7 @@ class Realestate extends CI_Controller {
 			//$data['rei'] = $data; 
 			
 			// save KPIs
- 			//if ( isset( $objid ) ) $this->realestate_model->update_kpis_objects($objid, $data);
+ 			if ( isset( $objid ) ) $this->realestate_model->update_kpis_objects($objid, $data);
 
 	        $this->load->view('templates/header', $data);
 	        $this->load->view('realestate/view_reobjects', $data);
@@ -139,6 +139,12 @@ class Realestate extends CI_Controller {
 
 	        $data['rei'] = $this->realestate_model->get_objects($objid);
 
+	        if (empty($data['rei']))
+	        {
+	                //show_404();
+	        		die("ID not found. - edit");
+	        }
+
 	        // get values from config
 			$data['rei']['rate'] = $rate = $this->config->item('rate'); 
 			$avg_price = $this->config->item('buy');	
@@ -148,12 +154,6 @@ class Realestate extends CI_Controller {
 			$data['CURRENCY'] = $this->config->item('currency');
 
 			$data['sizeunit'] = $this->config->item('sizeunit');
-
-	        if (empty($data['rei']))
-	        {
-	                //show_404();
-	        		die("ID not found. - edit");
-	        }
 
 	        $data['rei']['update'] = true;
 
@@ -166,14 +166,19 @@ class Realestate extends CI_Controller {
 		{
 			$auth_user = $this->check_auth();
 
+	        // get values from config
+			//$rate = $this->config->item('rate'); 
+			//$avg_price = $this->config->item('buy');	
+
 		    $this->load->helper('form');
 		    $this->load->library('form_validation');
 
 			$data['rei'] = $this->input->post();
 
 	        // get values from config
-			$data['rei']['rate'] = $rate = $this->config->item('rate'); 
+			$rate = $this->config->item('rate'); 
 			$avg_price = $this->config->item('buy');
+			$data['rei']['rate'] = $rate;
 
 			$data['LANGUAGE_SETTINGS'] = $this->lang->line('LANGUAGE_SETTINGS');
 			$data['METADESCRIPTION'] = $this->lang->line('META_DESCRIPTION_INDEX');
@@ -221,11 +226,13 @@ class Realestate extends CI_Controller {
 
 	        	// get last inserted row
 	        	$data = $this->realestate_model->get_objects($objid);
+
 				$data['CURRENCY'] = $this->config->item('currency');
 				$data['LANGUAGE_SETTINGS'] = $this->lang->line('LANGUAGE_SETTINGS');
 				$data['METADESCRIPTION'] = $this->lang->line('META_DESCRIPTION_INDEX');
+
 				$data['rei'] = $this->calculate_kpi( $data, $rate, $avg_price);
-				
+
 				// save KPIs
 	 			if ( isset( $objid ) ) $this->realestate_model->update_kpis_objects($objid, $data);
 
@@ -241,6 +248,10 @@ class Realestate extends CI_Controller {
 		{
 			$auth_user = $this->check_auth();
 
+	        // get values from config
+			$rate = $this->config->item('rate'); 
+			$avg_price = $this->config->item('buy');	
+
 		    $this->load->helper('form');
 		    $this->load->library('form_validation');
 
@@ -248,7 +259,7 @@ class Realestate extends CI_Controller {
 
 			$data['LANGUAGE_SETTINGS'] = $this->lang->line('LANGUAGE_SETTINGS');
 			$data['METADESCRIPTION'] = $this->lang->line('META_DESCRIPTION_INDEX');
-			$data['CURRENCY'] = $this->config->item('currency');
+			$data['rei']['CURRENCY'] = $data['CURRENCY'] = $this->config->item('currency');
 
 			$data['sizeunit'] = $this->config->item('sizeunit');			
 
@@ -285,9 +296,16 @@ class Realestate extends CI_Controller {
 		    }
 		    else
 		    {
-		        $this->realestate_model->update_objects($data['rei']['objid'],$data);
+		    	$objid = $data['rei']['objid'];
+
+		        $this->realestate_model->update_objects($objid ,$data);
 	        	
-	        	$data['realestate'] = $this->realestate_model->get_objects();	
+				$data['rei'] = $this->calculate_kpi( $data['rei'], $rate, $avg_price);
+
+				// save KPIs
+	 			if ( isset( $objid ) ) $this->realestate_model->update_kpis_objects($objid, $data);
+
+	 			$data['realestate'] = $this->realestate_model->get_objects();	
 
 	        	$this->load->view('templates/header', $data);	        		        
 		        $this->load->view('realestate/list_reobjects', $data);
@@ -338,6 +356,7 @@ class Realestate extends CI_Controller {
 
 			$data['total_price'] = $data['purchaseprice'] + $data['renovationprice'] + $data['agentprice'] + $data['notary'] + $data['landregistry'] + $data['loanregistrycost'];                              
 			$data['total_price_net'] = $data['purchasepricenet'] + $data['renovationprice'] + $data['agentprice'] + $data['notary'] + $data['landregistry'] + $data['loanregistrycost'];                              
+			$data['vat'] = $data['total_price'] - $data['total_price_net'];
 
 			$data['price_per_m2_exclgarage'] = ( $data['total_price'] - $data['garage'] ) / $data['size'];
 			$data['price_per_m2_incloutdoor'] = ( $data['total_price'] - $data['garage'] ) / $data['total_size'];
@@ -359,18 +378,22 @@ class Realestate extends CI_Controller {
   			}
 
   			// sum of equity
-			$data['equitysum'] = $data['total_price'] * $data['equityratio'];
+			$data['equitysum'] = ( $data['total_price'] -  $data['vat'] ) * $data['equityratio'] + $data['vat'];
+
 			$data['loansum'] = $data['total_price'] - $data['equitysum'];
  
  			// only the loan rates 
 			if ( $data['loanregistrypercent'] > 0 ) {
-				$data['loan_rate'] = ( $data['total_price'] * ( 1 - $data['equityratio'] ) ) * $data['loanregistrypercent']/100;                               
+				//$data['loan_rate'] = ( ( $data['total_price']) * ( 1 - $data['equityratio'] ) ) * $data['loanregistrypercent']/100;                               
+				$data['loan_rate'] = ( $data['loansum'] ) * $data['loanregistrypercent']/100;                               
 			} else {
-				$data['loan_rate'] = ( $data['total_price'] * ( 1 - $data['equityratio'] ) ) * $rate['loan'];                               
+				//$data['loan_rate'] = ( ( $data['total_price']) * ( 1 - $data['equityratio'] ) ) * $rate['loan'];                               
+				$data['loan_rate'] = ( $data['loansum'] ) * $rate['loan'];                               
 			}
 
 			// 30 years, payback of 1.33 times the sum
-			$data['capital_payback'] = ( $data['total_price'] * ( 1 - $data['equityratio'] ) ) * $rate['paybacktimes'] / $rate['paybackyears']; 
+			//$data['capital_payback'] = ( ( $data['total_price']) * ( 1 - $data['equityratio'] ) ) * $rate['paybacktimes'] / $rate['paybackyears']; 
+			$data['capital_payback'] = ( $data['loansum'] ) * $rate['paybacktimes'] / $rate['paybackyears']; 
 
 			// rent gross
 			if ( $data['rentgross'] > 0 ) { 

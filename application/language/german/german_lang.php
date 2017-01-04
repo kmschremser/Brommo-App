@@ -65,7 +65,7 @@ $lang['p.m.'] = 'p.m.';
 $lang['per m2'] = 'pro m2';
 $lang['outdoor'] = 'Outdoor';
 
-$lang['LOAN - EQUITY RATIO'] = 'KREDIT - EIGENKAPITAL QUOTE';
+$lang['LOAN - EQUITY RATIO'] = 'KREDIT - EIGENKAPITAL QUOTE<br />USt ist im Eigenkapital inkludiert';
 $lang['incl. overheads, reserve &amp; taxes'] = 'inkl. Betriebskosten, Rücklage &amp; Steuern';
 $lang['AVG rent in this area'] = 'Mietpreis in dieser Gegend';
 
