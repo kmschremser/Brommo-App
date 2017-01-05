@@ -46,8 +46,10 @@ class Auth extends CI_Controller {
 			// check this first to get the right language
 			if ( "$hash_email" === "de" ) {
 				$this->language('de');
-			} else {
+			} elseif ( "$hash_email" === "en" ) {
 				$this->language('en');
+			} else {
+				$this->language();
 			}	
 
 			$data['SALT'] = $this->config->item('salt');

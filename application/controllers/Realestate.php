@@ -65,8 +65,10 @@ class Realestate extends CI_Controller {
 			// check this first to get the right language
 			if ( "$param1" === "de" ) {
 				$this->language('de');
-			} else {
+			} elseif ( "$param1" === "en" ) {
 				$this->language('en');
+			} else {
+				$this->language();
 			}	
 
 	        $data['realestate'] = $this->realestate_model->get_objects();

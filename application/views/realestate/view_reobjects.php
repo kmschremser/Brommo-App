@@ -102,7 +102,10 @@
 
                                         <h6><?php echo $this->lang->line('AVG rent in this area'); ?>: 
                                         <span class="color-success"><?php echo number_format($rei['alt_rent'], 2, '.', ','); ?> <?php echo $CURRENCY; ?></span>, <span class="color-info"><?php echo number_format($rei['rent_rate'], 2, '.', ','); ?> <?php echo $CURRENCY; ?> <?php echo $this->lang->line('per m2'); ?></span><br />
-                                        (<?php if ( $rei['diff_rent'] > 0 ) echo '<span class="color-danger">' . $this->lang->line('check') . ' '; else echo '<span class="color-success">' . $this->lang->line('good') . ' '; ?>
+                                        (
+<?php if ( $rei['diff_rent'] > 0 ) { 
+    echo '<span class="color-success">' . $this->lang->line('good') . ' '; } 
+    else { echo '<span class="color-danger">' . $this->lang->line('check') . ' '; } ?>
                                         <?php echo number_format($rei['diff_rent'], 2, '.', ','); ?> <?php echo $CURRENCY; ?></span> )<br />
                                         </h6>
 
