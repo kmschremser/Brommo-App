@@ -380,9 +380,10 @@ class Realestate extends CI_Controller {
   			}
 
   			// sum of equity
-			$data['equitysum'] = ( $data['total_price'] -  $data['vat'] ) * $data['equityratio'] + $data['vat'];
+			$data['equitysum'] = ( $data['total_price'] -  $data['vat'] ) * $data['equityratio'];
+			$data['equityvat'] = $data['vat'];
 
-			$data['loansum'] = $data['total_price'] - $data['equitysum'];
+			$data['loansum'] = $data['total_price'] - $data['equitysum'] - $data['equityvat'];
  
  			// only the loan rates 
 			if ( $data['loanregistrypercent'] > 0 ) {
@@ -480,14 +481,15 @@ class Realestate extends CI_Controller {
 
 			$data['profite'] = ($data['rent_net'] * 12) - $data['depreciation'] - $data['loan_rate'];
 
-			$data['taxes'] = $data['profite'] * $rate['profitetax'];
+			if ( $data['profite'] > 0 ) $data['taxes'] = $data['profite'] * $rate['profitetax'];
+			else $data['taxes'] = 0;
 
-			$data['earnings'] = ( $data['profite'] * (1-$rate['profitetax']) + $data['vat_red'] + $data['depreciation'] ); 
+			$data['earnings'] = ( $data['profite'] - $data['taxes'] + $data['vat_red'] + $data['depreciation'] ); 
 
 			$data['refinancing'] = $data['total_price'] / $data['earnings']; 
-			$data['refinancing2'] = $data['total_price'] / ($data['earnings'] + $data['loan_rate']);
+			//$data['refinancing2'] = $data['total_price'] / ($data['earnings'] + $data['loan_rate']);
 
-			$data['cashflow'] = ($data['rent_net'] * 12) + $data['vat_red'] - ($data['profite'] * $rate['profitetax']) - $data['capital_payback']; 
+			$data['cashflow'] = ($data['rent_net'] * 12) + $data['vat_red'] - $data['taxes'] - $data['capital_payback']; 
 
 			$data['cashflow2'] = $data['cashflow'] - $data['risk'] - $data['refurb']; 
 

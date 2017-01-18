@@ -106,7 +106,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group color-success">
                                       <label for="rentgross"><?php echo $this->lang->line('Rent'); ?> <?php echo $this->lang->line('gross'); ?></label><br/ >
-                                      <sup>(<?php echo $this->lang->line('incl. overheads, reserve &amp; taxes'); ?>)</sup>
+                                      <sup>(<?php echo $this->lang->line('incl. overheads, reserve &amp; taxes'); ?>) (<a href="http://www.immopreise.at/Wien/Wohnung/Miete" target="immopreise">Immopreise</a>)</sup>
                                       <input type="text" name="rentgross" id="rentgross" value="<?php if ( isset( $rei['rentgross'] ) ) echo $rei['rentgross']; ?>" placeholder="<?php echo $this->lang->line('Rent'); ?> <?php echo $this->lang->line('gross'); ?> <?php echo $CURRENCY; ?>" data-parsley-type="alphanum" class="form-control">
 
                                     </div>

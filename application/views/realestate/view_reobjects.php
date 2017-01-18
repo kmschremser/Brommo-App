@@ -206,7 +206,8 @@
                               </tr>
                               <tr>
                                 <th><code><?php echo $this->lang->line('Equity'); ?>:</code></th>
-                                <td><?php echo number_format($rei['equitysum'], 2, '.',','); ?> <?php echo $CURRENCY; ?></td>
+                                <td><?php echo number_format($rei['equitysum'], 2, '.',','); ?> <?php echo $CURRENCY; ?> <br /> 
+                                  +<?php echo number_format($rei['equityvat'], 2, '.',','); ?> <?php echo $CURRENCY; ?> <?php echo $this->lang->line('VAT'); ?>VAT</td>
                               </tr>
                               <tr>
                                 <th><code><?php echo $this->lang->line('Loan sum'); ?>:</code></th>
@@ -350,7 +351,7 @@
                               <tr>
                                 <th><code><?php echo $this->lang->line('Refinancing in years'); ?></code></th>
                                 <td><?php echo number_format($rei['refinancing'], 0, '.', ','); ?> <?php echo $this->lang->line('ys.'); ?><br />
-                                ( <?php echo number_format($rei['refinancing2'], 0, '.', ','); ?> <?php echo $this->lang->line('ys.'); ?> <?php echo $this->lang->line('without loan'); ?> )
+                                <!--( <?php echo number_format($rei['refinancing2'], 0, '.', ','); ?> <?php echo $this->lang->line('ys.'); ?> <?php echo $this->lang->line('without loan'); ?> )-->
                               </td>
                               </tr>
  
@@ -367,18 +368,18 @@
                               </tr>
                               <tr>
                                 <th><code><?php echo $this->lang->line('VAT reduction'); ?></code></th>
-                                <td><?php 
-                                echo number_format(($rei['vat_red'] * -1), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
+                                <td>
+                                +<?php echo number_format(($rei['vat_red']), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
                               <tr>
                                 <th><code><?php echo $this->lang->line('Loan'); ?></code></th>
                                 <td>
-                                <?php echo number_format($rei['capital_payback'] * -1, 2, '.',','); ?> <?php echo $CURRENCY; ?></td>
+                                -<?php echo number_format($rei['capital_payback'], 2, '.',','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
                               <tr>
                                 <th><code><?php echo $this->lang->line('Tax on yield'); ?></code></th>
-                                <td><?php                           
-                                echo number_format(($rei['profite'] * -0.25), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
+                                <td>
+                                -<?php echo number_format(($rei['taxes']), 2, '.', ','); ?> <?php echo $CURRENCY; ?></td>
                               </tr>
                               <tr>
                                 <th class="warning"><code><?php echo $this->lang->line('Cashflow p.a.'); ?></code><br /><?php echo $this->lang->line('{rent net <br />+vat red. <br />- loan (capital payback)}'); ?></th>
