@@ -5,7 +5,7 @@ $config['sizeunit'] = 'm<sup>2</sup>';
 $config['salt'] = '$1$KPL2hzPq$TDXWtLG/xcs3wV90qKXSj.';
 
 $config['rate']['loan'] = "0.023"; // 2.3 % p.a.
-$config['rate']['agent'] = "0.036";
+$config['rate']['agent'] = "0.030"; // because no VAT
 $config['rate']['notary'] = "0.02";
 $config['rate']['landregistry'] = "0.046";
 $config['rate']['depreciation'] = "0.015";

@@ -320,21 +320,20 @@ class Realestate extends CI_Controller {
 		{
 			$auth_user = $this->check_auth();
 
-	        // show agentprice (default is 3.6% right now)
+	        // show agentprice (default is 3.0% right now - because no VAT)
 			if ( $data['agent'] == null ) 
 			{ 
-				$data['agentprice'] = $data['purchaseprice'] * $rate['agent'];
+				$data['agentprice'] = $data['purchasepricenet'] * $rate['agent'];
 			} else 
 				$data['agentprice'] = $data['agent'];
 
 			// notary - take rate from dataset or config
 			if ( $data['lawyerpercent'] > 0 ) {
-				$data['notary'] = $data['purchaseprice'] * $data['lawyerpercent']/100;	
+				$data['notary'] = $data['purchasepricenet'] * $data['lawyerpercent']/100;	
 			} else {
-				$data['notary'] = $data['purchaseprice'] * $rate['notary'];	
+				$data['notary'] = $data['purchasepricenet'] * $rate['notary'];	
 			}
 			
-
 			// land registry - take rate from dataset or config
 			if ( $data['purchasetax'] > 0 ) {
 				$data['landregistry'] = $data['purchaseprice'] * $data['purchasetax']/100;
@@ -346,9 +345,10 @@ class Realestate extends CI_Controller {
 			// loan rate is then the same as registry cost
 			if ( $data['equityratio'] < 1 ) { 
 				if ( $data['loanregistrypercent'] > 0 ) {
-					$data['loanregistrycost'] = $data['purchaseprice'] * $data['loanregistrypercent']/100;
+					// we calculate 1.2x times the value to be guaranteed for
+					$data['loanregistrycost'] = $data['purchasepricenet'] * 1.1 * 1.2 * $data['loanregistrypercent']/100;
 				} else {
-					$data['loanregistrycost'] = $data['purchaseprice'] * $rate['loan'];
+					$data['loanregistrycost'] = $data['purchasepricenet'] * 1.1 * 1.2 * $rate['loan'];
 				}
 			} else 
 				$data['loanregistrycost'] = 0;
