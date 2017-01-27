@@ -109,7 +109,7 @@ $lang['Active'] = 'Aktiv';
 $lang['Your image'] = 'Dein Bild';
 $lang['Logout'] = 'Logout';
 $lang['All rights reserved'] = 'Alle Rechte gesichert';
-$lang['Sitemap_text1'] = 'This is eine Anwendung zur Verwaltung deiner Immobilien-Deals und Finanzmarkt-Trades';
+$lang['Sitemap_text1'] = 'This is eine Anwendung zur Verwaltung deiner Immobilien-Deals';
 $lang['Sitemap_text2'] = 'Du trades und kaufst/verkaufst Immobilien auf dein eigenes Risiko. Mach nicht uns verantwortlich.';
 $lang['SITEMAP'] = 'SITEMAP';
 
@@ -184,7 +184,7 @@ $lang['failed_login'] = "Etwas ist wirklich schief gegangen. Deine Email oder Pa
 // MAIL
 $lang['register_subject'] = 'Brommo APP - willkommen [Achtung Aktivierung erforderlich]';
 $lang['register_mail_body_part0'] = 'Willkommen';
-$lang['register_mail_body_part1'] = "\n\nDu bist herzlich willkommen bei der Brommo App. Wir haben diese App erstellt, um dir zu helfen, deine Immobilien Deals zu bewerten und deine Finanzmarkt-Investments Klicke diesen Link, um deinen Benutzer zu aktivieren.\n\n";
+$lang['register_mail_body_part1'] = "\n\nDu bist herzlich willkommen bei der Brommo App. Wir haben diese App erstellt, um dir zu helfen, deine Immobilien Deals zu bewerten. Klicke diesen Link, um deinen Benutzer zu aktivieren.\n\n";
 $lang['register_mail_body_part2'] = "\n\nHappy investing. kms";
 $lang['register_success'] = 'Willkommen! Du bist ein Brommo App\'ianer :). Prüfe mal deine Emails und aktiviere deinen Benutzer, bitte.';
 

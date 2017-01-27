@@ -109,8 +109,8 @@ $lang['Active'] = 'Active';
 $lang['Your image'] = 'Your image';
 $lang['Logout'] = 'Logout';
 $lang['All rights reserved'] = 'All rights reserved';
-$lang['Sitemap_text1'] = 'This is an app for managing your real estate purchases and financial market trades';
-$lang['Sitemap_text2'] = 'You\'re trading and buying/selling real estate and shares on your own risk. Don\'t blame us.';
+$lang['Sitemap_text1'] = 'This is an app for managing your real estate purchases';
+$lang['Sitemap_text2'] = 'You\'re trading and buying/selling real estate on your own risk. Don\'t blame us.';
 $lang['SITEMAP'] = 'SITEMAP';
 
 // create real estate
@@ -184,7 +184,7 @@ $lang['failed_login'] = "Something failed badly. Your email or password are wron
 // MAIL
 $lang['register_subject'] = 'Brommo APP - welcome [action to be taken]';
 $lang['register_mail_body_part0'] = 'Welcome';
-$lang['register_mail_body_part1'] = "\n\nYou are really welcome to the Brommo App. We created this app to help you manage your real estate and financial market investments. Please click this link to activate your user account.\n\n";
+$lang['register_mail_body_part1'] = "\n\nYou are really welcome to the Brommo App. We created this app to help you manage your real estate. Please click this link to activate your user account.\n\n";
 $lang['register_mail_body_part2'] = "\n\nHappy investing. kms";
 $lang['register_success'] = 'Welcome! You\'re a Brommo App\'ianer :). Check your mail and activate your account, please.';
 
