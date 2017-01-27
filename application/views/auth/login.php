@@ -66,8 +66,10 @@
                                 <a href="/brommo/index.php?/auth/passforgotten" class="pull-right link-blue link-underlined"><?php echo $this->lang->line('Forgot Password?'); ?></a>
                                 <div class="checkbox">
                                     <label>
+                                        <!--
                                         <input type="checkbox" name="rememberme" value="1" <?php if ( isset( $data['rememberme'] ) && $data['rememberme'] == 1 ) echo "checked"; ?>>
                                         <?php echo $this->lang->line('Remember me'); ?>
+                                        //-->
                                     </label>
                                 </div>
                             </div>
@@ -76,7 +78,7 @@
                                 <a href="/brommo/index.php?/auth/register" class="btn btn-default-outilne width-150 margin-inline"><?php echo $this->lang->line('Create Account'); ?></a>
                             </div>
                             <div class="form-group">
-                                <div class="social-login">
+                                <!--<div class="social-login">
                                     <span class="title">
                                         <?php echo $this->lang->line('Use another service to'); ?> <?php echo $this->lang->line('Sign In'); ?>
                                     </span>
@@ -84,7 +86,7 @@
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-facebook"></i>
                                         </a>
-                                        <!--
+                                    
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-google"></i>
                                         </a>
@@ -94,9 +96,9 @@
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-twitter"></i>
                                         </a>
-                                        -->
+                                    
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </form>
                     </div>

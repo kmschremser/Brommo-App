@@ -98,6 +98,7 @@
                                 <a href="/brommo/index.php?/auth/login" class="btn btn-default-outilne width-150 margin-inline"><?php echo $this->lang->line('Sign In'); ?></a>
                             </div>
                             <div class="form-group">
+<!--                                
                                 <div class="social-login">
                                     <span class="title">
                                         <?php echo $this->lang->line('Use another service to'); ?> <?php echo $this->lang->line('Create Account'); ?>
@@ -106,7 +107,6 @@
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-facebook"></i>
                                         </a>
-                                        <!--
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-google"></i>
                                         </a>
@@ -116,9 +116,9 @@
                                         <a href="javascript: void(0);" class="btn btn-icon">
                                             <i class="icmn-twitter"></i>
                                         </a>
-                                        -->
                                     </div>
                                 </div>
+-->
                             </div>
                         </form>
                     </div>

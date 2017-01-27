@@ -182,7 +182,7 @@ $lang['activating_message_failed'] = 'Soooooooorrrrrrrrryyyyy. Etwas ist fehl ge
 $lang['failed_login'] = "Etwas ist wirklich schief gegangen. Deine Email oder Passwort sind falsch = dein Fehler. Dein Benutzer ist nicht aktiviert = dein Fehler. Etwas anderes? Eventuell unser Fehler.";
 
 // MAIL
-$lang['register_subject'] = 'Brommo APP - willkommen [Achtung Aktivität erforderlich]';
+$lang['register_subject'] = 'Brommo APP - willkommen [Achtung Aktivierung erforderlich]';
 $lang['register_mail_body_part0'] = 'Willkommen';
 $lang['register_mail_body_part1'] = "\n\nDu bist herzlich willkommen bei der Brommo App. Wir haben diese App erstellt, um dir zu helfen, deine Immobilien Deals zu bewerten und deine Finanzmarkt-Investments Klicke diesen Link, um deinen Benutzer zu aktivieren.\n\n";
 $lang['register_mail_body_part2'] = "\n\nHappy investing. kms";
@@ -190,7 +190,7 @@ $lang['register_success'] = 'Willkommen! Du bist ein Brommo App\'ianer :). Prüf
 
 // PW Forgotten
 $lang['return_message_forgottenpw'] = 'Ein Brief ist auf dem Weg zu dir, damit du ein neues Passwort bekommst. Na gut, es ist ein Email :).';
-$lang['new_pw_subject'] = 'Du!!!! hast dein Passwort vergessen @Brommo App?!??!??!';
+$lang['new_pw_subject'] = 'DU hast dein Passwort vergessen @Brommo App';
 $lang['pwforgotten_mail_body_part0'] = 'Grüß dich';
 $lang['pwforgotten_mail_body_part1'] = "\n\nDu hast dein Passwort vergessen. Ok, ein letztes Mal lassen wir das noch durchgehen. :) Klick diesen Link, um ein neues Passwort einzutragen.\n\n";
 $lang['pwforgotten_mail_body_part2'] = "\n\nHappy investing. kms";

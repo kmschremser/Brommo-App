@@ -190,14 +190,14 @@ $lang['register_success'] = 'Welcome! You\'re a Brommo App\'ianer :). Check your
 
 // PW Forgotten
 $lang['return_message_forgottenpw'] = 'A letter is on its way to help you get a new password. Ok, it\'s an email :).';
-$lang['new_pw_subject'] = 'YOU!!!! forgot your password @Brommo App?!??!??!';
+$lang['new_pw_subject'] = 'YOU forgot your password @Brommo App';
 $lang['pwforgotten_mail_body_part0'] = 'Cheers';
 $lang['pwforgotten_mail_body_part1'] = "\n\nYou forgot your password. Ok, last time we accept this :). Click this link to add a new password.\n\n";
 $lang['pwforgotten_mail_body_part2'] = "\n\nHappy investing. kms";
 $lang['add_pw_forgottenpw'] = "We found you (or your user). Great! Change your password.";
 $lang['add_pw_forgottenpw_failed'] = "Do you really exist? I mean, do you really believe in your existence???";
 $lang['New password'] = "Add new password";
-$lang['return_message_forgottenpw_final'] = "Your new password is working now. Try it.";
+$lang['return_message_forgottenpw_final'] = "Your new password is active now. Try it.";
 
 
 $lang['English'] = "English";

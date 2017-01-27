@@ -177,10 +177,9 @@ class Auth extends CI_Controller {
 		    if ($this->form_validation->run() === FALSE) {
 		        $this->load->view('templates/header_auth', $data);
 		        $this->load->view('auth/register', $data);
-
-		    }
-		    else {
+		    } else {
 		        $objid = $this->auth_model->register_user($data);
+		        
 		        $data['success'] = $this->lang->line('register_success') . "<br />";
 
 		        $this->load->view('templates/header_auth', $data);

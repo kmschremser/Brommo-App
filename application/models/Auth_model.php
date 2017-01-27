@@ -85,7 +85,14 @@ class Auth_model extends CI_Model {
 		    $activation_url = $SERVERHOST . '/brommo/index.php?auth/login/' . md5($this->input->post('email')) . '/' . $iid;
 		    //$activation_url = $activation_url . "\n\n" . crypt( $this->input->post('password'), $data['SALT'] ) . "\n\n" . ( $this->input->post('password') ) . "\n\n";
 
-		    mail($this->input->post('email'), $this->lang->line('register_subject'), $this->lang->line('register_mail_body_part0').' '.$this->input->post('firstname').$this->lang->line('register_mail_body_part1').$activation_url.$this->lang->line('register_mail_body_part2'), 'From: no-reply@brommoapp.com');
+		    $headers    = "Content-Type: text/plain; charset=utf-8\n";
+			$headers    .= "From: BrommoAPP <no-reply@brommoapp.com>\n";
+			$recipient  = $this->input->post('email');
+			$subject    = $this->lang->line('register_subject');
+			$message = $this->lang->line('register_mail_body_part0').' '.$this->input->post('firstname').$this->lang->line('register_mail_body_part1').$activation_url.$this->lang->line('register_mail_body_part2');
+			$message    = wordwrap($message, 1024);
+
+			mail($recipient, $subject, $message, $headers);
 
 		    return $iid;
 		}	
@@ -107,7 +114,15 @@ class Auth_model extends CI_Model {
 		    	{
 		    		$iid = $return['objid'];
 		    		$new_pw_url = $SERVERHOST . '/brommo/index.php?auth/passforgotten/' . md5($data['validation']['email']) . '/' . $iid;
-		    		mail( $data['validation']['email'], $this->lang->line('new_pw_subject'), $this->lang->line('pwforgotten_mail_body_part0').' '.$this->input->post('firstname').$this->lang->line('pwforgotten_mail_body_part1').$new_pw_url.$this->lang->line('pwforgotten_mail_body_part2'), 'From: no-reply@brommoapp.com');
+
+		    		$headers    = "Content-Type: text/plain; charset=utf-8\n";
+					$headers    .= "From: BrommoAPP <no-reply@brommoapp.com>\n";
+					$recipient  = $data['validation']['email'];
+					$subject    = $this->lang->line('new_pw_subject');
+					$message = $this->lang->line('pwforgotten_mail_body_part0').' '.$this->input->post('firstname').$this->lang->line('pwforgotten_mail_body_part1').$new_pw_url.$this->lang->line('pwforgotten_mail_body_part2');
+					$message    = wordwrap($message, 1024);
+
+					mail($recipient, $subject, $message, $headers);
 		    	}
 		    }
 
