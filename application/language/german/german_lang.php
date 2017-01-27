@@ -110,7 +110,7 @@ $lang['Your image'] = 'Dein Bild';
 $lang['Logout'] = 'Logout';
 $lang['All rights reserved'] = 'Alle Rechte gesichert';
 $lang['Sitemap_text1'] = 'This is eine Anwendung zur Verwaltung deiner Immobilien-Deals';
-$lang['Sitemap_text2'] = 'Du trades und kaufst/verkaufst Immobilien auf dein eigenes Risiko. Mach nicht uns verantwortlich.';
+$lang['Sitemap_text2'] = 'Du kaufst/verkaufst Immobilien auf dein eigenes Risiko. Mach nicht uns verantwortlich.';
 $lang['SITEMAP'] = 'SITEMAP';
 
 // create real estate
@@ -175,7 +175,7 @@ $lang['Register'] = 'Registrierung';
 $lang['Keep me updated'] = 'Mich laufend informieren';
 $lang['Firstname'] = 'Vorname';
 $lang['Password forgotten'] = 'Passwort vergessen';
-$lang['Get new Password'] = 'Neues Passwort anfordern';
+$lang['Get new Password'] = 'Neues Passwort';
 $lang['Password forgotten TEXT'] = '';
 $lang['activating_message_success'] = 'Leg los mit dem Investieren. Dein Benutzer ist jetzt aktiv.';
 $lang['activating_message_failed'] = 'Soooooooorrrrrrrrryyyyy. Etwas ist fehl geschlagen. Dein Account ist nicht aktiv. Versuche es nochmal oder sende uns eine nette Nachricht an den Support.';
@@ -184,7 +184,7 @@ $lang['failed_login'] = "Etwas ist wirklich schief gegangen. Deine Email oder Pa
 // MAIL
 $lang['register_subject'] = 'Brommo APP - willkommen [Achtung Aktivierung erforderlich]';
 $lang['register_mail_body_part0'] = 'Willkommen';
-$lang['register_mail_body_part1'] = "\n\nDu bist herzlich willkommen bei der Brommo App. Wir haben diese App erstellt, um dir zu helfen, deine Immobilien Deals zu bewerten. Klicke diesen Link, um deinen Benutzer zu aktivieren.\n\n";
+$lang['register_mail_body_part1'] = "\n\nWir heissen dich herzlich willkommen bei der Brommo App. Wir haben diese App erstellt, um dir zu helfen, deine Immobilien Deals zu bewerten. Klicke diesen Link, um deinen Benutzer zu aktivieren.\n\n";
 $lang['register_mail_body_part2'] = "\n\nHappy investing. kms";
 $lang['register_success'] = 'Willkommen! Du bist ein Brommo App\'ianer :). Prüfe mal deine Emails und aktiviere deinen Benutzer, bitte.';
 
